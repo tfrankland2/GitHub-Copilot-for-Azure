@@ -60,3 +60,4 @@ User intent?
 | **VM Recommender**        | Recommend VM sizes, VMSS, pricing using public APIs/docs | [vm-families](references/vm-families.md), [retail-prices-api](references/retail-prices-api.md), [vmss-guide](references/vmss-guide.md), [vm-quotas](references/vm-quotas.md) |
 | **VM Troubleshooter**     | Diagnose and resolve VM connectivity failures (RDP/SSH)  | [cannot-connect-to-vm](workflows/vm-troubleshooter/references/cannot-connect-to-vm.md) |
 | **Capacity Reservation**  | Create and manage Capacity Reservation Groups (CRGs)     | [capacity-reservation-overview](workflows/capacity-reservation/references/capacity-reservation-overview.md), [association-disassociation](workflows/capacity-reservation/references/association-disassociation.md) |
+
