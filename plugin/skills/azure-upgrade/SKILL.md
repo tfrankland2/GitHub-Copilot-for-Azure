@@ -1,6 +1,6 @@
 ---
 name: azure-upgrade
-description: "Assess and upgrade Azure workloads or modernize Azure SDK dependencies. WHEN: upgrade Consumption to Flex Consumption, upgrade Azure Functions plan, migrate hosting plan, function app SKU, migrate App Service to Container Apps, migrate legacy Azure SDKs for Java, com.microsoft.azure to com.azure. DO NOT USE FOR: Azure Local updates or upgrades; use azure-local."
+description: "Assess and upgrade Azure workloads between plans, tiers, or SKUs, or modernize Azure SDK dependencies in source code. WHEN: upgrade Consumption to Flex Consumption, upgrade Azure Functions plan, migrate hosting plan, change hosting plan, function app SKU, migrate App Service to Container Apps, migrate legacy Azure SDKs for Java, upgrade legacy Azure Java SDK, com.microsoft.azure to com.azure."
 license: MIT
 compatibility: python3.10+
 metadata:
@@ -21,8 +21,6 @@ metadata:
 | Assess upgrade readiness | "Is my function app ready for Flex Consumption?" |
 | Automate plan migration | "Automate the steps to upgrade my Functions plan" |
 | Modernize legacy Azure Java SDK | "Migrate legacy Azure SDKs for Java", "Upgrade legacy Azure Java SDK", "Migrate my Java project from com.microsoft.azure to com.azure" |
-
-For Azure Local solution updates, release upgrades, Lifecycle Manager, Arc resource bridge update requirements, or Azure Local update troubleshooting, route to `azure-local` Operate and Update.
 
 ## Rules
 
