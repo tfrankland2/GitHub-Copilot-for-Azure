@@ -1,6 +1,6 @@
 ---
 name: azure-compute
-description: "Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, and capacity reservations. WHEN: Azure VM, VMSS, scale set, recommend, compare, server, website, burstable, lightweight, VM family, workload, GPU, learning, simulation, dev/test, backend, autoscale, load balancer, Flexible orchestration, Uniform orchestration, cost estimate, connect, refused, Linux, black screen, reset password, reach VM, port 3389, NSG, troubleshoot, capacity reservation, CRG, reserve VMs, guarantee capacity, pre-provision capacity, CRG association, CRG disassociation. DO NOT USE FOR: Azure Local VMs, Arc VMs on Azure Local, or Azure Local resource bridge; use azure-local."
+description: "Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, and capacity reservations. WHEN: Azure VM, VMSS, scale set, recommend, compare, server, website, burstable, lightweight, VM family, workload, GPU, learning, simulation, dev/test, backend, autoscale, load balancer, Flexible orchestration, Uniform orchestration, cost estimate, connect, refused, Linux, black screen, reset password, reach VM, port 3389, NSG, troubleshoot, capacity reservation, CRG, reserve VMs, guarantee capacity, pre-provision capacity, CRG association, CRG disassociation."
 license: MIT
 metadata:
   author: Microsoft
@@ -22,15 +22,10 @@ Activate this skill when the user:
 - Asks about Capacity Reservation Groups (CRGs), reserving VM capacity, associating/disassociating VMs with a CRG, or guaranteeing compute capacity
 - Uses prompts like "Help me choose a VM"
 
-Do **not** use this skill for Azure Local VMs enabled by Azure Arc, Arc VM resources hosted on Azure Local, Azure Local resource bridge, or VM resources hosted on Azure Local. Use `azure-local` for those scenarios because resource dependencies, networking, lifecycle, and management commands differ from public Azure VMs.
-
 ## Routing
 
 ```text
 User intent?
-├─ Azure Local VM / Arc VM on Azure Local / Azure Local resource bridge
-│  └─ Route to `azure-local` Workload Management
-│
 ├─ Recommend / choose / compare / price a VM or VMSS
 │  └─ Route to [VM Recommender](workflows/vm-recommender/vm-recommender.md)
 │
@@ -46,7 +41,6 @@ User intent?
 
 | Signal                                                                        | Workflow                                                                                   |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| "Azure Local VM", "Arc VM on Azure Local", "Arc-enabled VM on Azure Local", "Azure Local resource bridge", "VM on Azure Local" | `azure-local` Workload Management |
 | "recommend VM", "which VM", "VM size", "VM pricing", "VMSS", "scale set"     | [VM Recommender](workflows/vm-recommender/vm-recommender.md)                               |
 | "can't connect", "RDP", "SSH", "NSG blocking", "reset password", "black screen" | [VM Troubleshooter](workflows/vm-troubleshooter/vm-troubleshooter.md)                   |
 | "capacity reservation", "CRG", "reserve capacity", "guarantee capacity", "associate VM with CRG" | [Capacity Reservation](workflows/capacity-reservation/capacity-reservation.md) |
