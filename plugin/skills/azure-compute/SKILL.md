@@ -1,6 +1,6 @@
 ---
 name: azure-compute
-description: "Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, and capacity reservations. WHEN: Azure VM, VMSS, scale set, recommend, compare, server, website, burstable, lightweight, VM family, workload, GPU, learning, simulation, dev/test, backend, autoscale, load balancer, Flexible orchestration, Uniform orchestration, cost estimate, connect, refused, Linux, black screen, reset password, reach VM, port 3389, NSG, troubleshoot, capacity reservation, CRG, reserve VMs, guarantee capacity, pre-provision capacity, CRG association, CRG disassociation."
+description: "Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, and capacity reservations. WHEN: Azure VM, VMSS, scale set, recommend, compare, server, website, burstable, lightweight, VM family, workload, GPU, learning, simulation, dev/test, backend, autoscale, load balancer, Flexible orchestration, Uniform orchestration, cost estimate, connect, refused, Linux, black screen, reset password, reach VM, port 3389, NSG, troubleshoot, capacity reservation, CRG, reserve VMs, guarantee capacity, pre-provision capacity, CRG association, CRG disassociation. DO NOT USE FOR: Azure Local VMs, Arc VMs on Azure Local, custom locations, or Azure Arc resource bridge; use azure-local."
 license: MIT
 metadata:
   author: Microsoft
@@ -22,10 +22,15 @@ Activate this skill when the user:
 - Asks about Capacity Reservation Groups (CRGs), reserving VM capacity, associating/disassociating VMs with a CRG, or guaranteeing compute capacity
 - Uses prompts like "Help me choose a VM"
 
+Do **not** use this skill for Azure Local VMs enabled by Azure Arc, Arc VM resources, custom locations, Azure Arc resource bridge, or VM resources hosted on Azure Local. Use `azure-local` for those scenarios because resource dependencies, networking, lifecycle, and management commands differ from public Azure VMs.
+
 ## Routing
 
 ```text
 User intent?
+├─ Azure Local VM / Arc VM on Azure Local / custom location / Arc resource bridge
+│  └─ Route to azure-local [Workload Management](../azure-local/workflows/workload-management/workload-management.md)
+│
 ├─ Recommend / choose / compare / price a VM or VMSS
 │  └─ Route to [VM Recommender](workflows/vm-recommender/vm-recommender.md)
 │
@@ -41,6 +46,7 @@ User intent?
 
 | Signal                                                                        | Workflow                                                                                   |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| "Azure Local VM", "Arc VM", "Arc-enabled VM", "custom location", "Arc resource bridge", "VM on Azure Local" | azure-local [Workload Management](../azure-local/workflows/workload-management/workload-management.md) |
 | "recommend VM", "which VM", "VM size", "VM pricing", "VMSS", "scale set"     | [VM Recommender](workflows/vm-recommender/vm-recommender.md)                               |
 | "can't connect", "RDP", "SSH", "NSG blocking", "reset password", "black screen" | [VM Troubleshooter](workflows/vm-troubleshooter/vm-troubleshooter.md)                   |
 | "capacity reservation", "CRG", "reserve capacity", "guarantee capacity", "associate VM with CRG" | [Capacity Reservation](workflows/capacity-reservation/capacity-reservation.md) |
@@ -54,4 +60,3 @@ User intent?
 | **VM Recommender**        | Recommend VM sizes, VMSS, pricing using public APIs/docs | [vm-families](references/vm-families.md), [retail-prices-api](references/retail-prices-api.md), [vmss-guide](references/vmss-guide.md), [vm-quotas](references/vm-quotas.md) |
 | **VM Troubleshooter**     | Diagnose and resolve VM connectivity failures (RDP/SSH)  | [cannot-connect-to-vm](workflows/vm-troubleshooter/references/cannot-connect-to-vm.md) |
 | **Capacity Reservation**  | Create and manage Capacity Reservation Groups (CRGs)     | [capacity-reservation-overview](workflows/capacity-reservation/references/capacity-reservation-overview.md), [association-disassociation](workflows/capacity-reservation/references/association-disassociation.md) |
-
